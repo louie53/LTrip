@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LocalTrip — homepage design proposal</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root { color-scheme: light; --paper:#f8f7f1; --ink:#173e35; --muted:#52635b; --line:#d6dcd1; --wash:#e9ede3; --focus:#a24823; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-underline-offset:5px; }
+    a:focus-visible, [tabindex="-1"]:focus-visible { outline:3px solid var(--focus); outline-offset:6px; border-radius:2px; }
+    a:hover { text-decoration:underline; }
+    .skip { position:absolute; top:12px; left:20px; padding:14px 20px; background:var(--paper); z-index:5; transform:translateY(-200%); }
+    .skip:focus { transform:translateY(0); }
+    .notice { margin:0; padding:13px 24px; background:var(--ink); color:var(--paper); text-align:center; font-size:13px; line-height:20px; }
+    .shell { width:min(1200px, calc(100% - 96px)); margin-inline:auto; }
+    .header { min-height:102px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line); }
+    .brand { display:inline-flex; align-items:center; gap:11px; min-height:44px; font-size:27px; font-weight:700; letter-spacing:-1px; text-decoration:none; }
+    .brand svg { width:33px; height:33px; }
+    .nav-link { display:inline-flex; align-items:center; gap:18px; min-height:44px; font-size:14px; text-decoration:none; }
+    .nav-link span { font-size:20px; }
+    .hero { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; padding-block:56px 60px; }
+    .eyebrow { margin:0 0 24px; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; line-height:1.6; }
+    .eyebrow .dash { display:inline-block; width:28px; height:1px; margin:0 11px 3px; background:currentColor; }
+    h1,h2 { font-family:Georgia, 'Times New Roman', serif; font-weight:400; }
+    h1 { margin:0; font-size:80px; letter-spacing:-4.3px; line-height:1.06; }
+    h1 span { display:block; }
+    .intro { margin:26px 0 23px; max-width:430px; font-size:18px; line-height:1.65; color:var(--muted); }
+    .meet { display:inline-flex; align-items:center; gap:14px; min-height:48px; font-size:14px; font-weight:700; text-decoration:none; }
+    .meet .arrow { width:36px; height:36px; display:grid; place-items:center; border:1px solid var(--ink); border-radius:50%; font-size:19px; font-weight:400; }
+    .status { margin-top:30px; padding:17px 20px; background:var(--wash); border-left:2px solid #75886a; max-width:443px; }
+    .status strong { display:block; margin-bottom:5px; font-size:12px; letter-spacing:.2px; }
+    .status p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .landscape { margin:0; }
+    .landscape img { display:block; width:100%; height:474px; object-fit:cover; object-position:44% center; border-radius:150px 8px 8px 8px; }
+    .landscape figcaption { display:flex; justify-content:space-between; gap:16px; margin-top:14px; font-size:12px; line-height:1.5; color:var(--muted); }
+    .landscape figcaption span:first-child { font-style:italic; }
+    .about { border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:72px; padding:43px 0 46px; scroll-margin-top:28px; }
+    .about .eyebrow { margin-bottom:14px; }
+    h2 { margin:0; font-size:39px; letter-spacing:-1.3px; line-height:1.15; }
+    .about-copy { padding-top:2px; font-size:16px; line-height:1.7; color:var(--muted); max-width:475px; }
+    .about-copy p { margin:0 0 16px; }
+    .about-copy p:last-child { margin:0; }
+    .about-copy strong { font-weight:400; color:var(--ink); }
+    .footer { border-top:1px solid var(--line); min-height:86px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:12px; line-height:1.6; color:var(--muted); }
+    .footer .footer-name { font-weight:700; color:var(--ink); }
+    ::selection { background:#d4dfc8; color:var(--ink); }
+    @media (max-width:1100px) and (min-width:761px) {
+      .shell { width:calc(100% - 64px); }
+      .hero,.about { gap:40px; }
+      h1 { font-size:clamp(52px, 5.7vw, 68px); letter-spacing:-3px; }
+      .landscape img { height:460px; border-top-left-radius:110px; }
+      .landscape figcaption { display:block; }
+      .landscape figcaption span { display:block; }
+    }
+    @media (max-width:760px) {
+      .notice { padding:12px 23px; font-size:12px; line-height:1.65; }
+      .shell { width:calc(100% - 48px); }
+      .header { min-height:88px; gap:12px; }
+      .brand { font-size:24px; gap:9px; }
+      .brand svg { width:29px; height:29px; }
+      .nav-link { font-size:13px; gap:10px; }
+      .hero { grid-template-columns:1fr; gap:32px; padding:38px 0 36px; }
+      .eyebrow { font-size:10px; letter-spacing:1.6px; margin-bottom:20px; }
+      .eyebrow .dash { width:20px; margin-inline:8px; }
+      h1 { font-size:clamp(44px, 12.8vw, 74px); letter-spacing:-2.6px; line-height:1.07; }
+      .intro { font-size:16px; line-height:1.65; margin:22px 0 16px; max-width:470px; }
+      .meet { min-height:48px; }
+      .status { margin-top:23px; padding:15px 17px; max-width:none; }
+      .landscape img { height:auto; aspect-ratio:1.25; border-radius:88px 6px 6px 6px; object-position:44% center; }
+      .landscape figcaption { font-size:11px; gap:10px; margin-top:12px; }
+      .about { grid-template-columns:1fr; gap:22px; padding:31px 0 33px; }
+      .about .eyebrow { margin-bottom:12px; }
+      h2 { font-size:34px; letter-spacing:-1px; }
+      .about-copy { padding:0; font-size:15px; line-height:1.7; }
+      .footer { min-height:105px; padding-block:22px; flex-direction:column; align-items:flex-start; justify-content:center; gap:5px; }
+    }
+    @media (max-width:359px) {
+      .shell { width:calc(100% - 40px); }
+      .brand { font-size:22px; }
+      .nav-link { gap:6px; font-size:12px; }
+      h1 { font-size:41px; }
+      .landscape figcaption { flex-direction:column; gap:3px; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <p class="notice">Portfolio demo — reservations are simulated. No payment is collected.</p>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="#top" aria-label="LocalTrip home">
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="1.5"/><path d="M9 23 16 12l5 8 3-5 4 8H9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="24" cy="11" r="2" fill="currentColor"/></svg>
+        LocalTrip
+      </a>
+      <nav aria-label="Main navigation"><a class="nav-link" href="#about">About LocalTrip <span aria-hidden="true">↘</span></a></nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">New Zealand <span class="dash" aria-hidden="true"></span> A local outlook</p>
+          <h1 id="hero-title"><span>Good days,</span><span>close to home.</span></h1>
+          <p class="intro">A fresh perspective on familiar places. A fictional New Zealand operator, imagined for thoughtful days out.</p>
+          <a class="meet" href="#about"><span class="arrow" aria-hidden="true">↘</span>Meet LocalTrip</a>
+          <div class="status">
+            <strong>Website preview</strong>
+            <p>Activities and reservations are not yet available.</p>
+          </div>
+        </div>
+        <figure class="landscape">
+          <img src="assets/coast-concept.png" alt="Concept image of a quiet bay, green headlands and a curving sandy beach." width="1536" height="1024">
+          <figcaption><span>A little room to explore.</span><span>AI-generated concept image</span></figcaption>
+        </figure>
+      </section>
+      <section class="about" id="about" aria-labelledby="about-title" tabindex="-1">
+        <div>
+          <p class="eyebrow">About LocalTrip</p>
+          <h2 id="about-title">One operator.<br>A local outlook.</h2>
+        </div>
+        <div class="about-copy">
+          <p>LocalTrip is a fictional New Zealand activity operator. The idea is simple: thoughtful local experiences, with room to notice the little things.</p>
+          <p><strong>This website is a personal portfolio project.</strong><br>No real tours or services are offered here.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span><span class="footer-name">LocalTrip</span> &nbsp;·&nbsp; New Zealand</span><span>A personal portfolio project</span></footer>
+  </div>
+</body>
+</html>

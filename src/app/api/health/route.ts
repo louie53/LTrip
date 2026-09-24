@@ -1,0 +1,9 @@
+// Liveness only: this does not claim database or external-service readiness.
+export const dynamic = "force-dynamic";
+
+export function GET() {
+  return Response.json(
+    { data: { status: "ok" } },
+    { headers: { "Cache-Control": "no-store" } },
+  );
+}

@@ -1,0 +1,12 @@
+const page=await figma.getNodeByIdAsync('0:1');await figma.setCurrentPageAsync(page);page.name='01 · Homepage';changed.push(page.id);
+if(figma.root.children.some(p=>p.name==='02 · Styles & components'))throw new Error('Pages exist; inspect before retry');
+const library=track(figma.createPage());library.name='02 · Styles & components';
+const handoff=track(figma.createPage());handoff.name='03 · Handoff';
+const desktop=auto(page,'Homepage / Desktop / 1440','VERTICAL',1440,{fill:'paper'});desktop.x=1800;desktop.y=280;desktop.placeholder=true;
+const mobile=auto(page,'Homepage / Mobile / 390','VERTICAL',390,{fill:'paper'});mobile.x=3360;mobile.y=280;mobile.placeholder=true;
+const cover=auto(page,'Cover / Getting started','VERTICAL',1830,{g:12});cover.x=1800;cover.y=40;
+await text(cover,'Project label','LOCALTRIP / M0 / EDITABLE DESIGN 01','Eyebrow/Desktop',1830);
+await text(cover,'File title','Good days, close to home.','Heading/Desktop',1830);
+await text(cover,'Review status','Homepage proposal · Awaiting design approval · Desktop 1440 / Mobile 390','Body/Base',1830,'muted');
+await text(cover,'Editing guide','Edit shared colors and type in Styles & components. Select a link instance to switch Default / Hover / Focus. Read Handoff before implementation.','Body/Small',1700,'muted');
+return {createdNodeIds:created,mutatedNodeIds:changed,pages:{screens:page.id,library:library.id,handoff:handoff.id},frames:{desktop:desktop.id,mobile:mobile.id,cover:cover.id},bounds:{desktop:{x:desktop.x,y:desktop.y,width:desktop.width},mobile:{x:mobile.x,y:mobile.y,width:mobile.width}}};

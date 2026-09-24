@@ -1,0 +1,1 @@
+{"content":[{"type":"text","text":"Error: in createVariable: invalid variable name\n    at createSemanticTokens (PLUGIN_1_SOURCE:72:54)\n    at <anonymous> (PLUGIN_1_SOURCE:156:57)\n"},{"type":"text","text":"Figma Debug UUID: d8cc91b2-93b4-4151-a7ee-1a4ccd482ab7"}],"structuredContent":{"safeToRetryWithoutCanvasRead":true,"error_code":"INVALID_ARGUMENT"},"isError":true}

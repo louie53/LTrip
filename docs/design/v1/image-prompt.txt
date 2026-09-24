@@ -1,0 +1,9 @@
+Built-in image_gen tool; generation, no reference images. Generated 2026-09-24.
+
+Use case: photorealistic-natural
+Asset type: conceptual landscape image for a local HTML homepage design proposal for a fictional New Zealand activity operator, LocalTrip.
+Primary request: a quietly beautiful coastal bay inspired by New Zealand, photographed from a low grassy headland in soft late-afternoon daylight. Teal-blue water, a curving pale sand beach, dark green coastal vegetation, rolling distant headlands, an open pale sky. A sense of a small day outdoors rather than a luxury resort.
+Style/medium: refined editorial landscape photograph, believable natural textures, muted colours, restrained film-like warmth, not oversaturated and not an illustrated poster.
+Composition/framing: landscape 3:2. Layered headlands from the lower-left foreground into the centre distance, open water to the right, horizon about 35 percent from the top. Strong enough to work in both a near-square desktop crop and wide mobile crop. No text overlay will be placed on the image.
+Constraints: entirely conceptual scenery, no claim of an identifiable real location, no people, no boats, no buildings, no logos, no text, no watermark, no tourism badges, no staged activity.
+Avoid: dramatic fantasy peaks, tropical palms, heavy sun flare, artificial teal-orange grading.

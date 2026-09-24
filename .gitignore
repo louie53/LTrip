@@ -1,0 +1,27 @@
+# Dependencies and generated build output
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local configuration and secrets; the example is intentionally tracked
+.env*
+!.env.example
+*.pem
+*.key
+
+# Tests, browser QA and logs
+coverage/
+.vitest/
+.playwright-cli/
+playwright-report/
+test-results/
+output/
+*.log
+
+# Operating system and local tooling
+.DS_Store
+.vercel/
+.idea/
