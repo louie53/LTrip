@@ -8,13 +8,15 @@ A portfolio project for a fictional New Zealand tourism operator: a responsive a
 
 Implemented: an English responsive home page, shared layout and styles, a minimal health endpoint, TypeScript, linting, unit tests, production build scripts and a GitHub Actions workflow.
 
+The home page follows the approved warm white, deep green and coastal image design in `docs/design/v1/home.html`, with Georgia headings and Arial body text. Its links only navigate within the page. The coastal image is labelled **AI-generated concept image**; it does not depict a real tour offered by LocalTrip.
+
 Activities, authentication, a database, reservations and the staff workspace are **not implemented yet**. There is no public deployment. Verification evidence and pending work live in [docs/PROGRESS.md](docs/PROGRESS.md).
 
 The product serves one operator. Payments, social groups, AI planning, maps and multiple operators are outside V1. See the [project plan](docs/project-plan.md) and [roadmap](docs/roadmap.md).
 
 ## Run locally
 
-Use Node.js **24.11.1** (see `.nvmrc`) and npm **11.7.0**. If you use nvm, run `nvm install` then `nvm use`. npm is the only package manager for this repository; commit `package-lock.json` with dependency changes.
+Run these commands from the repository root. Use Node.js **24.11.1** (see `.nvmrc`) and npm **11.7.0**. If you use nvm, run `nvm install` then `nvm use`. npm is the only package manager for this repository; commit `package-lock.json` with dependency changes.
 
 ```sh
 npm ci
@@ -47,13 +49,13 @@ npm run start -- --hostname 127.0.0.1
 
 Open the same local URL and stop with Ctrl+C. A successful build does not prove that every feature works. The unit tests call the route handler directly; they are not HTTP, database concurrency or end-to-end tests.
 
-CI runs the same four checks after a push or pull request **once a remote repository exists**. A workflow file is not evidence of a completed GitHub Actions run. There are no migration, seed, integration or E2E scripts until those features are implemented.
+The Git remote is [louie53/LTrip](https://github.com/louie53/LTrip), on `main`. The [first CI run for `ae22794`](https://github.com/louie53/LTrip/actions/runs/35978397962) installed dependencies successfully, failed lint, and skipped typecheck, unit tests and build. Local fixes have not been pushed, so there is no remote CI result for them or this home-page update. The owner handles pushes; actual local and remote results are recorded in [docs/PROGRESS.md](docs/PROGRESS.md). There are no migration, seed, integration or E2E scripts until those features are implemented.
 
 ## What to inspect manually
 
-1. Open `/`: English LocalTrip branding, introduction and demo disclaimer are visible.
-2. Follow the page links: they reach existing content; there is no pretend booking action.
-3. Check a narrow phone viewport and desktop: readable text, no horizontal scrolling.
+1. Open `/`: English LocalTrip branding, introduction, demo disclaimer and the coastal image's AI label are visible.
+2. Follow the page links: they reach the top, main content or About section on the same page; there is no pretend booking action.
+3. Check a narrow phone viewport and desktop: readable text, no horizontal scrolling, and a loaded coastal image with an appropriate crop.
 4. Press Tab: the skip link and links have visible focus; Enter follows them.
 5. Open `/api/health`: HTTP 200 with `{"data":{"status":"ok"}}` and `Cache-Control: no-store`.
 6. Inspect the browser console for runtime errors.
@@ -68,13 +70,16 @@ src/app/
   page.tsx               The only product page in M0
   globals.css            Tailwind entry and responsive visual styles
   api/health/route.ts     Minimal public GET endpoint
+public/images/           Local coastal concept image used by the home page
 tests/unit/              Health response contract tests
 .github/workflows/ci.yml  Local-check equivalents for GitHub Actions
 docs/                    Scope, roadmap, progress, deployment and learning notes
 AGENTS.md                Rules for future development sessions
 ```
 
-Next.js App Router keeps the page and HTTP endpoint in one application. The home page uses Server Components; client state is added only when interaction requires it. Tailwind supplies the styling foundation without starting a custom component library. System fonts keep the build independent of external font downloads.
+Next.js App Router keeps the page and HTTP endpoint in one application. The home page uses Server Components; client state is added only when interaction requires it. Tailwind supplies the styling foundation without starting a custom component library. Georgia and Arial font stacks keep the build independent of external font downloads.
+
+The home page statically imports `public/images/coast-concept.png` into `next/image`. Responsive `sizes` describes its rendered width so the browser can select an appropriate image candidate; `preload` requests early loading of the hero image. CSS controls the crop and responsive layout. The original design files remain in `docs/design/`.
 
 At initialization, registry metadata and official documentation were checked. Direct dependency versions are exact and transitive versions are recorded in `package-lock.json`:
 

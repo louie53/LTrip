@@ -1,6 +1,6 @@
 # M0 部署准备
 
-**状态：只准备部署方法；没有创建托管资源、推送远程仓库或公开部署。** 本地启动和构建的实际验证结果见 [PROGRESS.md](./PROGRESS.md)。
+**状态：未创建托管资源或公开部署。** 用户已将基础提交 `ae22794` 推送到 [louie53/LTrip](https://github.com/louie53/LTrip) 的 `main`；本地修复及本轮首页接入尚未推送。本地启动、构建和页面验收的实际结果见 [PROGRESS.md](./PROGRESS.md)。
 
 LocalTrip 采用 Node.js Web Service 运行方式，保留服务端 Route Handler，后续承载身份和预订逻辑。不要配置为 `output: "export"` 静态导出。Render 官方区分完整服务端应用的 Web Service 与静态导出站点；本项目选前者。[官方部署说明](https://render.com/docs/deploy-nextjs-app)
 
@@ -11,7 +11,7 @@ LocalTrip 采用 Node.js Web Service 运行方式，保留服务端 Route Handle
 | 设置 | 值 |
 |---|---|
 | Service type / runtime | Web Service / Node |
-| Repository / branch | 用户确认后的远程仓库与分支；当前不代填 |
+| Repository / branch | `https://github.com/louie53/LTrip` / `main`；已存在，尚未连接托管服务 |
 | Root directory | 仓库根目录 |
 | Node.js | 与项目 `.nvmrc` 和 `package.json` 要求保持一致 |
 | Build command | `npm ci && npm run build` |
@@ -26,7 +26,7 @@ M0 的健康检查只证明应用能处理请求，不包含数据库、登录�
 
 ## 本地模拟生产启动
 
-在项目根目录执行：
+在项目根目录执行。若本项目的开发服务正在运行，先在其终端使用 `Ctrl+C` 停止，再构建并启动生产服务：
 
 ```sh
 npm ci
@@ -42,6 +42,6 @@ npm run start -- --hostname 127.0.0.1
 
 M0 本地运行不需要 Supabase、支付、地图或 AI 密钥。后续阶段真正需要变量时，在本地 `.env.local` 填写，并在 `.env.example` 记录无秘密的说明；不要把密钥发到聊天中。服务端变量默认不暴露给浏览器，`NEXT_PUBLIC_` 前缀会使对应值进入客户端构建，因此不可用于数据库密码等秘密。[Next.js 环境变量说明](https://nextjs.org/docs/app/guides/self-hosting#environment-variables)
 
-公开部署前需要用户确认目标仓库、托管账户与方案，并授权远程推送和公开地址。费用按当时方案核查，不假设免费额度永久有效。本轮不创建 Render 或 Supabase 资源。
+公开部署前需要用户确认托管账户、方案与要部署的提交，并授权公开地址。远程推送由用户处理。费用按当时方案核查，不假设免费额度永久有效。本轮不创建 Render 或 Supabase 资源。
 
-本地 CI 命令通过不能代替 GitHub Actions 远程运行；配置文件存在也不能证明远程 CI 通过。公开后应另记真实地址、部署版本、健康检查结果与远程 CI 结果。
+`ae22794` 的[首次 GitHub Actions 运行](https://github.com/louie53/LTrip/actions/runs/35978397962)安装成功，但 lint 失败，后续检查跳过；修复后的远程结果尚未验证。本地检查通过不能代替 GitHub Actions 远程运行。公开后应另记真实地址、部署版本、健康检查结果与远程 CI 结果。

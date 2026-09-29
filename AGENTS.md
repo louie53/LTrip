@@ -12,8 +12,9 @@
 - The user wants persistent, separate conversations inside the LTrip project, not internal agents as substitutes for those conversations.
 - The main conversation is PM and overall acceptance. A design conversation owns the UI proposal; an implementation conversation owns initialization and code details. The user can ask questions directly in each.
 - Work on one small, explicitly assigned step. Run applicable checks, report results and explanations, then stop for user confirmation before the next step. M0 authorization is not permission to run all steps without checkpoints.
+- End every small step with a concrete next-step guide in Chinese: what was completed, what passed/failed/remains unverified, who acts next and in which task or directory, the exact commands or UI actions when needed, the expected success signal, and which output the user should return. Recommend one immediate next step; do not automatically begin the next milestone. If a local server is left running, state its URL and ownership so the user does not start a duplicate on the same port.
 - The PM must open the running website for visual acceptance when a runnable step is submitted; code generation and a build alone do not complete acceptance.
-- Coordinate file ownership before parallel writes. Design proposals are not approved specifications until the user accepts them. Existing home-page code is an unaccepted draft.
+- Coordinate file ownership before parallel writes. Design proposals are not approved specifications until the user accepts them. Read `docs/PROGRESS.md` for the current design approval and application acceptance status.
 - Keep agreed decisions and actual results in project documents so separate conversations have a shared reference. Remote GitHub pushes are handled by the user.
 
 ## Product scope

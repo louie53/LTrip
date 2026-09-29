@@ -1,74 +1,114 @@
+import Image from "next/image";
+import coastConcept from "../../public/images/coast-concept.png";
+
+function ArrowIcon() {
+  return (
+    <svg
+      className="arrow-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M5 5 19 19M9 19h10V9" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   return (
-    <div className="site-shell" id="top">
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="LocalTrip home">
-          <span className="brand-mark" aria-hidden="true">↗</span>
-          LocalTrip<span className="wordmark-dot">.</span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#about">About LocalTrip</a>
-        </nav>
-      </header>
-
-      <main id="main-content" tabIndex={-1}>
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">New Zealand · Local experiences</p>
-            <h1 id="hero-title">Good days,<br />close to home.</h1>
-            <p className="hero-description">
-              A fresh perspective on familiar places. Discover the idea behind
-              LocalTrip, a small activity operator with a local outlook.
-            </p>
-            <a className="text-link" href="#about">
-              Meet LocalTrip <span aria-hidden="true">↗</span>
+    <div id="top">
+      <p className="notice">
+        Portfolio demo — reservations are simulated. No payment is collected.
+      </p>
+      <div className="shell">
+        <header className="header">
+          <a className="brand" href="#top" aria-label="LocalTrip home">
+            <svg viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false">
+              <circle cx="18" cy="18" r="16" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="M9 23 16 12l5 8 3-5 4 8H9Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+              />
+              <circle cx="24" cy="11" r="2" fill="currentColor" />
+            </svg>
+            LocalTrip
+          </a>
+          <nav aria-label="Main navigation">
+            <a className="nav-link" href="#about">
+              About LocalTrip <ArrowIcon />
             </a>
-          </div>
+          </nav>
+        </header>
 
-          <aside className="preview-card" aria-labelledby="preview-title">
-            <div className="landscape" aria-hidden="true">
-              <span className="landscape-sun" />
-              <span className="landscape-hill landscape-hill-back" />
-              <span className="landscape-hill landscape-hill-front" />
+        <main id="main-content" tabIndex={-1}>
+          <section className="hero" aria-labelledby="hero-title">
+            <div className="hero-copy">
+              <p className="eyebrow">
+                New Zealand <span className="dash" aria-hidden="true" /> A local outlook
+              </p>
+              <h1 id="hero-title">
+                <span>Good days,</span>
+                <span>close to home.</span>
+              </h1>
+              <p className="intro">
+                A fresh perspective on familiar places. A fictional New Zealand
+                operator, imagined for thoughtful days out.
+              </p>
+              <a className="meet" href="#about">
+                <span className="arrow"><ArrowIcon /></span>
+                Meet LocalTrip
+              </a>
+              <div className="status">
+                <strong>Website preview</strong>
+                <p>Activities and reservations are not yet available.</p>
+              </div>
             </div>
-            <div className="preview-copy">
-              <p className="eyebrow">Site preview</p>
-              <h2 id="preview-title">A first look.</h2>
+
+            <figure className="landscape">
+              <Image
+                src={coastConcept}
+                alt="Concept image of a quiet bay, green headlands and a curving sandy beach."
+                sizes="(max-width: 359px) calc(100vw - 40px), (max-width: 760px) calc(100vw - 48px), (max-width: 1100px) calc((100vw - 104px) / 2), (max-width: 1296px) calc((100vw - 168px) / 2), 564px"
+                preload
+              />
+              <figcaption>
+                <span>A little room to explore.</span>
+                <span>AI-generated concept image</span>
+              </figcaption>
+            </figure>
+          </section>
+
+          <section className="about" id="about" aria-labelledby="about-title" tabIndex={-1}>
+            <div>
+              <p className="eyebrow">About LocalTrip</p>
+              <h2 id="about-title">One operator.<br />A local outlook.</h2>
+            </div>
+            <div className="about-copy">
               <p>
-                We’re starting with a simple introduction. Activities and
-                reservations are not yet available.
+                LocalTrip is a fictional New Zealand activity operator. The idea
+                is simple: thoughtful local experiences, with room to notice the
+                little things.
+              </p>
+              <p>
+                <strong>This website is a personal portfolio project.</strong>
+                <br />No real tours or services are offered here.
               </p>
             </div>
-          </aside>
-        </section>
+          </section>
+        </main>
 
-        <section className="about-section" id="about" aria-labelledby="about-title">
-          <div>
-            <p className="eyebrow">About LocalTrip</p>
-            <h2 id="about-title">One operator.<br />A local outlook.</h2>
-          </div>
-          <div className="about-copy">
-            <p>
-              LocalTrip is a fictional New Zealand tourism operator. The idea is
-              simple: thoughtful local activities, with the details you need to
-              plan a day out.
-            </p>
-            <p>
-              This website is a personal portfolio project. No real tours or
-              services are offered here.
-            </p>
-          </div>
-        </section>
-
-        <p className="demo-notice">
-          Portfolio demo — reservations are simulated. No payment is collected.
-        </p>
-      </main>
-
-      <footer className="site-footer">
-        <span>LocalTrip · New Zealand</span>
-        <span>A personal portfolio project</span>
-      </footer>
+        <footer className="footer">
+          <span><span className="footer-name">LocalTrip</span> &nbsp;·&nbsp; New Zealand</span>
+          <span>A personal portfolio project</span>
+        </footer>
+      </div>
     </div>
   );
 }

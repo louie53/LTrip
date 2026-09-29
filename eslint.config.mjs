@@ -6,6 +6,8 @@ export default defineConfig([
   ...nextVitals,
   ...nextTypescript,
   globalIgnores([
+    // Archived Figma execution fragment; its helpers are used by other design snippets.
+    "docs/design/figma/helpers.js",
     ".next/**",
     "out/**",
     "dist/**",
