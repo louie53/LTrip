@@ -5,12 +5,14 @@
 - Read `docs/project-plan.md`, `docs/codex_localtrip_start_here.md`, and `docs/PROGRESS.md` before changing code. The original `docs/travel_booking_project_plan_v1.md` is retained as a source document.
 - Inspect existing files and Git status first. Do not overwrite, delete, reset, or reformat unrelated work. Explain material conflicts between the plan and the environment before proceeding.
 - Work on one authorized milestone at a time. The current authorization is **M0 only**. Stop and report after M0; do not start M1 automatically.
+- M0 is closed out for the local foundation and deployment preparation. The user has deferred public deployment and kept AWS on Free plan; an online URL is an explicitly deferred item, not a passed check. M1 needs a new user instruction.
 - User instructions for the current task take precedence over older plans and this file. Update progress notes when scope or assumptions change.
 
 ## User-facing task workflow
 
 - The user wants persistent, separate conversations inside the LTrip project, not internal agents as substitutes for those conversations.
-- The main conversation is PM and overall acceptance. A design conversation owns the UI proposal; an implementation conversation owns initialization and code details. The user can ask questions directly in each.
+- The main conversation is PM and overall acceptance. A design conversation owns the UI proposal; an implementation conversation owns initialization and code details; an AWS deployment conversation owns hosting assessment and approved deployment work. The user can ask questions directly in each.
+- Deployment is currently deferred by the user. Keep AWS on Free plan, preserve all learning resources and the configured budgets, and do not treat historical EC2/Lightsail proposals as pending tasks. The account review identified a Free account plan ending on 2026-11-01 and Free Tier credits expiring on 2027-05-01; do not confuse these dates or assume a Paid plan. If the user requests deployment later, reassess AWS eligibility, costs and permissions; Render remains a fallback. The deployment conversation owns `docs/aws-deployment.md`; PM owns shared progress and coordination documents until a new step assigns different boundaries.
 - Work on one small, explicitly assigned step. Run applicable checks, report results and explanations, then stop for user confirmation before the next step. M0 authorization is not permission to run all steps without checkpoints.
 - End every small step with a concrete next-step guide in Chinese: what was completed, what passed/failed/remains unverified, who acts next and in which task or directory, the exact commands or UI actions when needed, the expected success signal, and which output the user should return. Recommend one immediate next step; do not automatically begin the next milestone. If a local server is left running, state its URL and ownership so the user does not start a duplicate on the same port.
 - The PM must open the running website for visual acceptance when a runnable step is submitted; code generation and a build alone do not complete acceptance.

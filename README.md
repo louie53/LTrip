@@ -4,13 +4,13 @@ A portfolio project for a fictional New Zealand tourism operator: a responsive a
 
 **Portfolio demo — reservations are simulated. No payment is collected.**
 
-## Current status: M0 foundation
+## Current status: M0 local foundation complete
 
 Implemented: an English responsive home page, shared layout and styles, a minimal health endpoint, TypeScript, linting, unit tests, production build scripts and a GitHub Actions workflow.
 
 The home page follows the approved warm white, deep green and coastal image design in `docs/design/v1/home.html`, with Georgia headings and Arial body text. Its links only navigate within the page. The coastal image is labelled **AI-generated concept image**; it does not depict a real tour offered by LocalTrip.
 
-Activities, authentication, a database, reservations and the staff workspace are **not implemented yet**. There is no public deployment. Verification evidence and pending work live in [docs/PROGRESS.md](docs/PROGRESS.md).
+Activities, authentication, a database, reservations and the staff workspace are **not implemented yet**. Public deployment is deferred by the owner; M0 is closed out for the local foundation and deployment preparation. There is no live demo URL. AWS remains on its Free plan, and hosting proposals are retained for future review in [docs/aws-deployment.md](docs/aws-deployment.md). Verification evidence and pending work live in [docs/PROGRESS.md](docs/PROGRESS.md). M1 has not started.
 
 The product serves one operator. Payments, social groups, AI planning, maps and multiple operators are outside V1. See the [project plan](docs/project-plan.md) and [roadmap](docs/roadmap.md).
 
@@ -49,7 +49,7 @@ npm run start -- --hostname 127.0.0.1
 
 Open the same local URL and stop with Ctrl+C. A successful build does not prove that every feature works. The unit tests call the route handler directly; they are not HTTP, database concurrency or end-to-end tests.
 
-The Git remote is [louie53/LTrip](https://github.com/louie53/LTrip), on `main`. The [first CI run for `ae22794`](https://github.com/louie53/LTrip/actions/runs/35978397962) installed dependencies successfully, failed lint, and skipped typecheck, unit tests and build. Local fixes have not been pushed, so there is no remote CI result for them or this home-page update. The owner handles pushes; actual local and remote results are recorded in [docs/PROGRESS.md](docs/PROGRESS.md). There are no migration, seed, integration or E2E scripts until those features are implemented.
+The Git remote is [louie53/LTrip](https://github.com/louie53/LTrip), on `main`. The [CI run for `cff7e4d`](https://github.com/louie53/LTrip/actions/runs/36522712121) passed locked dependency installation, lint, typecheck, unit tests and the production build on 2026-09-29. This validates the home-page update and tooling fixes after the initial lint failure on `ae22794`; it does not constitute a public deployment. The owner handles pushes; actual local and remote results are recorded in [docs/PROGRESS.md](docs/PROGRESS.md). There are no migration, seed, integration or E2E scripts until those features are implemented.
 
 ## What to inspect manually
 
